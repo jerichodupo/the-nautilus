@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExperienceRouteImport } from './routes/experience'
+import { Route as InquireRouteImport } from './routes/inquire'
+import { Route as InvestmentRouteImport } from './routes/investment'
+import { Route as LocationRouteImport } from './routes/location'
+import { Route as ResidencesRouteImport } from './routes/residences'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InquireRoute = InquireRouteImport.update({
+  id: '/inquire',
+  path: '/inquire',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentRoute = InvestmentRouteImport.update({
+  id: '/investment',
+  path: '/investment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResidencesRoute = ResidencesRouteImport.update({
+  id: '/residences',
+  path: '/residences',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/inquire': typeof InquireRoute
+  '/investment': typeof InvestmentRoute
+  '/location': typeof LocationRoute
+  '/residences': typeof ResidencesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/inquire': typeof InquireRoute
+  '/investment': typeof InvestmentRoute
+  '/location': typeof LocationRoute
+  '/residences': typeof ResidencesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/experience': typeof ExperienceRoute
+  '/inquire': typeof InquireRoute
+  '/investment': typeof InvestmentRoute
+  '/location': typeof LocationRoute
+  '/residences': typeof ResidencesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/experience'
+    | '/inquire'
+    | '/investment'
+    | '/location'
+    | '/residences'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/experience'
+    | '/inquire'
+    | '/investment'
+    | '/location'
+    | '/residences'
+  id:
+    | '__root__'
+    | '/'
+    | '/experience'
+    | '/inquire'
+    | '/investment'
+    | '/location'
+    | '/residences'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExperienceRoute: typeof ExperienceRoute
+  InquireRoute: typeof InquireRoute
+  InvestmentRoute: typeof InvestmentRoute
+  LocationRoute: typeof LocationRoute
+  ResidencesRoute: typeof ResidencesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inquire': {
+      id: '/inquire'
+      path: '/inquire'
+      fullPath: '/inquire'
+      preLoaderRoute: typeof InquireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment': {
+      id: '/investment'
+      path: '/investment'
+      fullPath: '/investment'
+      preLoaderRoute: typeof InvestmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/residences': {
+      id: '/residences'
+      path: '/residences'
+      fullPath: '/residences'
+      preLoaderRoute: typeof ResidencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExperienceRoute: ExperienceRoute,
+  InquireRoute: InquireRoute,
+  InvestmentRoute: InvestmentRoute,
+  LocationRoute: LocationRoute,
+  ResidencesRoute: ResidencesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
