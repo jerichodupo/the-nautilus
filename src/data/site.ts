@@ -12,10 +12,6 @@ export const site = {
   operator: "Landco Lifestyle Ventures",
   residenceCount: 176,
   contact: {
-    // Replace with the official project hotline / email when confirmed.
-    email: "inquiries@thenautilus-casobe.ph",
-    phone: "+63 (2) 0000 0000",
-    hours: "Monday to Saturday, 9:00 AM – 6:00 PM (PHT)",
     address: "CaSoBē, Barangay Santa Ana, Calatagan, Batangas",
   },
   siteUrl: "https://id-preview--0bbb5ea1-7d6b-4be2-9628-855409130128.lovable.app",

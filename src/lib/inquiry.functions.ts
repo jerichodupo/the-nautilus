@@ -22,17 +22,28 @@ export const inquirySchema = z.object({
 
 export type InquiryInput = z.infer<typeof inquirySchema>;
 
-/**
- * Receives inquiry submissions. Currently logs server-side; connect a database,
- * CRM, or email service here to persist leads.
- */
 export const submitInquiry = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => inquirySchema.parse(data))
   .handler(async ({ data }) => {
     const { website: _honeypot, ...lead } = data;
-    console.log("[inquiry] new lead", {
-      ...lead,
-      receivedAt: new Date().toISOString(),
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const receivedAt = new Date().toISOString();
+    const { error } = await supabaseAdmin.from("inquiries").insert({
+      first_name: lead.firstName,
+      last_name: lead.lastName,
+      email: lead.email,
+      mobile: lead.mobile,
+      unit: lead.unit,
+      interest: lead.interest,
+      message: lead.message || null,
+      consent: lead.consent,
+      received_at: receivedAt,
     });
-    return { ok: true as const, receivedAt: new Date().toISOString() };
+
+    if (error) {
+      console.error("[inquiry] unable to save lead", { code: error.code });
+      throw new Error("Unable to save inquiry");
+    }
+
+    return { ok: true as const, receivedAt };
   });

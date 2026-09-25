@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { disclaimer, nav, site } from "@/data/site";
 import { Logo } from "./Logo";
 
@@ -37,20 +37,8 @@ export function Footer() {
         </div>
 
         <div className="lg:col-span-3">
-          <h3 className="eyebrow text-sand">Contact</h3>
+          <h3 className="eyebrow text-sand">Location</h3>
           <ul className="mt-5 space-y-4 text-sm text-gunmetal-foreground/80">
-            <li className="flex gap-3">
-              <Mail className="mt-0.5 size-4 shrink-0 text-sand" aria-hidden />
-              <a href={`mailto:${site.contact.email}`} className="hover:text-gunmetal-foreground">
-                {site.contact.email}
-              </a>
-            </li>
-            <li className="flex gap-3">
-              <Phone className="mt-0.5 size-4 shrink-0 text-sand" aria-hidden />
-              <a href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`} className="hover:text-gunmetal-foreground">
-                {site.contact.phone}
-              </a>
-            </li>
             <li className="flex gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-sand" aria-hidden />
               <span>{site.contact.address}</span>
@@ -71,19 +59,12 @@ export function Footer() {
 
       <div className="border-t border-gunmetal-foreground/10">
         <div className="container-site py-8">
-          <p className="max-w-5xl text-xs leading-relaxed text-gunmetal-foreground/50">{disclaimer}</p>
+          <p id="disclaimer" className="max-w-5xl text-xs leading-relaxed text-gunmetal-foreground/50">{disclaimer}</p>
           <div className="mt-6 flex flex-col gap-3 text-xs text-gunmetal-foreground/60 sm:flex-row sm:items-center sm:justify-between">
             <p>
               © {new Date().getFullYear()} {site.fullName}. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <a href="#disclaimer" className="hover:text-gunmetal-foreground">
-                Disclaimer
-              </a>
-              <a href="#privacy" className="hover:text-gunmetal-foreground">
-                Privacy Notice
-              </a>
-            </div>
+            <p id="privacy">Inquiry details are used only to respond to the sender.</p>
           </div>
         </div>
       </div>
