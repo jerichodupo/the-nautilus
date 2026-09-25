@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Clock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { MapPin, ShieldCheck } from "lucide-react";
 import { z } from "zod";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { Reveal } from "@/components/site/Reveal";
@@ -19,6 +19,8 @@ export const Route = createFileRoute("/inquire")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: InquirePage,
@@ -49,20 +51,8 @@ function InquirePage() {
 
           <aside className="space-y-10 lg:col-span-4 lg:col-start-9">
             <Reveal>
-              <h2 className="eyebrow">Project Contact</h2>
+              <h2 className="eyebrow">Project Location</h2>
               <ul className="mt-6 space-y-5 text-sm text-foreground/85">
-                <li className="flex gap-3">
-                  <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-                  <a href={`mailto:${site.contact.email}`} className="hover:text-primary">{site.contact.email}</a>
-                </li>
-                <li className="flex gap-3">
-                  <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-                  <a href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`} className="hover:text-primary">{site.contact.phone}</a>
-                </li>
-                <li className="flex gap-3">
-                  <Clock className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
-                  <span>{site.contact.hours}</span>
-                </li>
                 <li className="flex gap-3">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
                   <span>{site.contact.address}</span>

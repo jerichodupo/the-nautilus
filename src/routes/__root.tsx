@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { StickyInquire } from "@/components/site/StickyInquire";
+import { Button } from "@/components/ui/button";
 
 function NotFoundComponent() {
   return (
@@ -52,21 +53,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
+          <Button
+            type="button"
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex h-11 items-center justify-center rounded-sm bg-primary px-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-primary-deep"
           >
             Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex h-11 items-center justify-center rounded-sm border border-primary px-6 font-heading text-xs font-semibold uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-          >
-            Go home
-          </a>
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/">Go home</Link>
+          </Button>
         </div>
       </div>
     </div>
@@ -92,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Lato:wght@300;400;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,

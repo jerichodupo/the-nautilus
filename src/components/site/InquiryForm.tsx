@@ -79,13 +79,9 @@ export function InquiryForm({
           Your inquiry has been received. A project specialist will reach out with the latest
           residence details, pricing, and availability.
         </p>
-        <p className="mt-6 text-sm text-muted-foreground">
-          Prefer to talk sooner? Email{" "}
-          <a className="text-primary underline-offset-4 hover:underline" href={`mailto:${site.contact.email}`}>
-            {site.contact.email}
-          </a>
-          .
-        </p>
+        <Button type="button" variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
+          Send another inquiry
+        </Button>
       </div>
     );
   }
@@ -154,7 +150,7 @@ export function InquiryForm({
       </Field>
 
       {/* Honeypot */}
-      <div className="sr-only" aria-hidden>
+      <div className="sr-only" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input id="website" tabIndex={-1} autoComplete="off" {...register("website")} />
       </div>
@@ -178,8 +174,7 @@ export function InquiryForm({
 
       {status === "error" && (
         <p role="alert" className="rounded-sm border border-destructive/30 bg-destructive/5 p-3 text-sm text-destructive">
-          Something went wrong sending your inquiry. Please try again or email us directly at{" "}
-          {site.contact.email}.
+          Something went wrong sending your inquiry. Please check your connection and try again.
         </p>
       )}
 
