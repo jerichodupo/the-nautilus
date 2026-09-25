@@ -2,14 +2,13 @@ import { Link } from "@tanstack/react-router";
 import logo from "@/assets/logo-transparent.png";
 import { cn } from "@/lib/utils";
 
-export function Logo({ light = false, className }: { light?: boolean; className?: string }) {
+export function Logo({ className }: { className?: string }) {
   return (
     <Link
       to="/"
       aria-label="The Nautilus at CaSoBē — Home"
       className={cn(
         "inline-flex shrink-0 rounded-sm px-2 py-1.5 transition-colors",
-        light ? "bg-background/90 backdrop-blur-sm" : "bg-background",
         className,
       )}
     >

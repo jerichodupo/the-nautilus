@@ -42,7 +42,7 @@ export function Header() {
       )}
     >
       <div className="container-site flex items-center justify-between">
-        <Logo light={transparent} />
+        <Logo />
 
         <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
           {nav.map((item) => (

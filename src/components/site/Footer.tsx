@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="bg-gunmetal text-gunmetal-foreground">
       <div className="container-site grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-4">
-          <Logo light />
+          <Logo />
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-gunmetal-foreground/70">
             Luxury beachfront residences within CaSoBē, a master-planned seaside community in
             Calatagan, Batangas. Own a place where the horizon becomes home.
