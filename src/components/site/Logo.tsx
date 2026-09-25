@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/the-nautilus-logo.webp.asset.json";
+import logo from "@/assets/logo-transparent.png";
 import { cn } from "@/lib/utils";
 
 export function Logo({ light = false, className }: { light?: boolean; className?: string }) {
@@ -14,7 +14,7 @@ export function Logo({ light = false, className }: { light?: boolean; className?
       )}
     >
       <img
-        src={logoAsset.url}
+        src={logo}
         alt=""
         width={500}
         height={202}
